@@ -5,7 +5,7 @@ Plug 'dense-analysis/ale'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
-Plug 'tsony-tsonev/nerdtree-git-plugin'
+"Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
@@ -15,30 +15,25 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }"
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sheerun/vim-polyglot'
+Plug 'morhetz/gruvbox'
 Plug 'rafi/awesome-vim-colorschemes'  
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine' 
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+Plug 'tomasiser/vim-code-dark'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'numToStr/Comment.nvim'
 
 " Initialize plugin system
 call plug#end()
 
-lua require('Comment').setup()
-
-nmap te :tabedit
+" Open current directory
+nmap te :tabedit 
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
 
-nmap <C-a> gg<S-v>G
-
-inoremap jk <ESC>
-nmap <C-b> :NERDTreeToggle<CR>
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
+:nmap <c-cr> i<cr><Esc>
 
 nnoremap <C-n> :FZF<CR>
 let g:fzf_action = {
@@ -47,6 +42,11 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit'
   \}
 
+inoremap jk <ESC>
+nmap <C-b> :NERDTreeToggle<CR>
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
+
 set mouse=a
 set number
 set relativenumber
@@ -54,47 +54,16 @@ set hidden
 set cursorline
 set expandtab
 set autoindent
-set smartindent
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
+set showcmd
+set cmdheight=2
 set encoding=utf8
 set history=5000
 set clipboard=unnamedplus
-
-
-set cursorline
-"set cursorcolumn
-
-" Set cursor line color on visual mode
-highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
-
-highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
-
-augroup BgHighlight
-  autocmd!
-  autocmd WinEnter * set cul
-  autocmd WinLeave * set nocul
-augroup END
-
-if &term =~ "screen"
-  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
-  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
-endif
-
-" true color
-if exists("&termguicolors") && exists("&winblend")
-  syntax enable
-  set termguicolors
-  set winblend=0
-  set wildoptions=pum
-  set pumblend=5
-  set background=dark
-  " Use NeoSolarized
-  let g:neosolarized_termtrans=1
-  runtime ./colors/NeoSolarized.vim
-  colorscheme NeoSolarized
-endif
-
+set nobackup
+set noswapfile
 
 " open NERDTree automatically
 "autocmd StdinReadPre * let s:std_in=1
@@ -122,7 +91,6 @@ let g:NERDTreeIgnore = ['^node_modules$']
 "let g:prettier#quickfix_auto_focus = 0
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 " run prettier on save
 "let g:prettier#autoformat = 0
 "autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
@@ -136,6 +104,7 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <C-s> :w<CR>
 nnoremap <C-Q> :wq<CR>
+nnoremap <C-z> :undo<CR>
 
 " shift+arrow selection
 nmap <S-Up> v<Up>
@@ -156,7 +125,12 @@ vmap <C-x> d<Esc>i
 map <C-v> pi
 imap <C-v> <Esc>pi
 
-
+set cindent
+if(has("termguicolors"))
+    set termguicolors
+endif
+syntax enable
+colorscheme codedark
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
@@ -166,15 +140,15 @@ endfunction
 
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
 " file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
+"function! SyncTree()
+"  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+"    NERDTreeFind
+"    wincmd p
+"  endif
+"endfunction
 
 " Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
+"autocmd BufEnter * call SyncTree()
 
 " coc config
 let g:coc_global_extensions = [
@@ -310,7 +284,7 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_statusline_ontop=0
-let g:airline_theme='solarized_flood'
+let g:airline_theme='minimalist'
 
 let g:airline#extensions#tabline#formatter = 'default'
 " navegação entre os buffers
