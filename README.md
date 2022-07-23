@@ -5,7 +5,7 @@
   
 ## Plug
 
-- alie
+- ale
 - emmet-vim
 - coc.vim
 - nerdtree
