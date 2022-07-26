@@ -30,7 +30,7 @@ Most available via npm
 sudo npm install -g typescript typescript-language-server vscode-langservers-extracted vls @tailwindcss/language-server yaml-language-server @prisma/language-server emmet-ls neovim graphql-language-service-cli graphql-language-service-server @astrojs/language-server
 ```
 
-## Install Formaters
+## Install Formater
 
 prettier with npm
 
