@@ -7,7 +7,9 @@
 ## Clone the repositroy into ~/.config/nvim
 
 ```bash
-git clone https://github.com/yellhtetaung/NeovimSetup.git ~/.config
+git clone https://github.com/yellhtetaung/NeovimSetup.git
+cd NeovimSetup
+mv nvim ~/.config/
 ```
 
 ## Install Placker
@@ -36,3 +38,29 @@ prettier with npm
 sudo npm i -g prettier
 
 ```
+
+## Launch Nvim
+
+On the first run of nvim be sure to install plugns.
+
+`:PackerInstall`
+
+Then compile loader file.
+
+`:PackerCompile`
+
+## Keymap
+
+### Insert Mode
+
+- esc (kk, jj, jk)
+- save (Ctrl - s)
+- undo (Ctrl - z)
+
+## Normal Mode
+
+- telescope find files (Ctrl - n)
+- NvimTreeToggle (Ctrl - b)
+- save (Ctrl - s)
+- undo (Ctrl - z)
+- move split window (Tab)
