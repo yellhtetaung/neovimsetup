@@ -64,3 +64,7 @@ Then compile loader file.
 - save (Ctrl - s)
 - undo (Ctrl - z)
 - move split window (Tab)
+
+## Updated Plugin
+
+- Markdown Preview
