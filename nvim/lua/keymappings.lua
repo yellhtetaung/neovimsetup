@@ -57,7 +57,7 @@ local mappings = {
     -- escape clears highlighting
     { "<esc>", "<cmd>noh<cr><esc>" },
     -- move window 
-    {"<Tab>", "<cmd>tabnext<CR>"},
+    {"<Tab>", ":bnext<CR>"},
     -- hop words
     { "f", "<cmd>HopWord<cr>" },
     { "F", "<cmd>HopLine<cr>" },
