@@ -5,8 +5,10 @@ require("options")
 require("load-plugins")
 
 -- set up language servers
-require("ls")
-
+require("lsp.config")
+require("lsp.setup")
+require("lsp.functions")
+require("snippets.react")
 -- set up treesitter
 require("treesitter-settings")
 

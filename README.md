@@ -63,8 +63,13 @@ Then compile loader file.
 - NvimTreeToggle (Ctrl - b)
 - save (Ctrl - s)
 - undo (Ctrl - z)
-- move split window (Tab)
+- BufferTabs swapping (Tab)
 
-## Updated Plugin
+## NvimTree 
 
-- Markdown Preview
+- create directory (a)
+- rename directory and file (r)
+- delete directory and file (c)
+- clipboard (c) 
+  
+

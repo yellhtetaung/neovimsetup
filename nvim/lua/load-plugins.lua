@@ -40,6 +40,9 @@ return require("packer").startup({
 			},
 		})
 
+		-- Tabnine
+		use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+
 		-- snippets
 		use({
 			"L3MON4D3/LuaSnip",
