@@ -87,7 +87,6 @@ lspconfig.vuels.setup {
   on_attach = on_attach,
 }
 
-
 for _, server in ipairs { "bashls", "cssls", "graphql", "html", "volar" } do
   lspconfig[server].setup {
     on_attach = on_attach,

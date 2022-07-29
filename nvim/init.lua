@@ -30,9 +30,10 @@ require("Comment-settings")
 require("presence-settings")
 require("dashboard-settings")
 require("undo-tree-settings")
-require("auto-session").setup{
-  auto_save_enabled=false
-}
+require("auto-session").setup({
+  auto_save_enabled = false,
+})
+require("indent")
 
 -- keymappings
 require("keymappings")

@@ -27,6 +27,9 @@ return require("packer").startup({
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
 
+        -- indentbackline 
+        use ("lukas-reineke/indent-blankline.nvim")
+
 		-- Autocomplete
 		use({
 			"hrsh7th/nvim-cmp",
